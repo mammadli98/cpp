@@ -1,0 +1,19 @@
+simplevm:
+  script:
+    - mkdir ci_simplevm
+    - cd ci_simplevm
+    - cmake -DCMAKE_BUILD_TYPE=Debug ../exercise2
+    - make
+    - ./test/tester
+  tags:
+    - cmake
+
+lint_simplevm:
+  script:
+    - mkdir ci_lint_simplevm
+    - cd ci_lint_simplevm
+    - cmake -DCMAKE_BUILD_TYPE=Debug ../exercise2
+    - make lint
+  tags:
+    - cmake
+    - clang-tidy
