@@ -2,32 +2,52 @@
 # Solution to task (a) #
 ########################
 
-Write down your solution to task (a) here. You can remove this line.
+g++ -std=c++20 -O0 -g -o program program.cpp
 
 
 ########################
 # Solution to task (b) #
 ########################
 
-Write down your solution to task (b) here. You can remove this line.
+gdb program
+break main
+run
+info breakpoints
+info locals
+info threads
+print $rip
 
 
 ########################
 # Solution to task (c) #
 ########################
 
-Write down your solution to task (c) here. You can remove this line.
+gdb program
+break foo
+1000
+1000
+info args
+nexti
+advance 11
+print e
+finish
 
 
 ########################
 # Solution to task (d) #
 ########################
 
-Write down your solution to task (d) here. You can remove this line.
+gdb program
+break main
+run
+call foo(12,34)
+
+foo function do 12 + 34
 
 
 ########################
 # Solution to task (e) #
 ########################
 
-Write down your solution to task (e) here. You can remove this line.
+possible combination of inputs for crash are : 1, 10000000000000000
+Program will crash because of stack overflow
