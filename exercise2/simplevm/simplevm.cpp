@@ -20,86 +20,86 @@ int32_t runVM()
         iss >> opcode;
 
         switch (opcode) {
-            case 0:  
+            case 0:  //halt
                 return A;
-            case 10: { 
+            case 10: {     //movi
                 char reg;
                 int32_t value;
                 iss >> reg >> value;
                 movi(reg, value);
                 break;
             }
-            case 11: { 
+            case 11: {   //movf
                 char reg;
                 float value;
                 iss >> reg >> value;
                 movf(reg, value);
                 break;
             }
-            case 20: { 
+            case 20: {   //loada
                 char reg;
                 iss >> reg;
                 loada(reg);
                 break;
             }
-            case 21: {
+            case 21: {  //storea
                 char reg;
                 iss >> reg;
                 storea(reg);
                 break;
             }
-            case 22: 
+            case 22:   //swapab
                 swap();
                 break;
-            case 30: { 
+            case 30: {   //loadx
                 char reg;
                 iss >> reg;
                 loadx(reg);
                 break;
             }
-            case 31: { 
+            case 31: {  //storex
                 char reg;
                 iss >> reg;
                 storex(reg);
                 break;
             }
-            case 32: 
+            case 32:   //swapxy
                 swapxy();
                 break;
-            case 40:
+            case 40:  //itof
                 itof();
                 break;
-            case 41:  
+            case 41:  //ftoi
                 ftoi();
                 break;
-            case 50: 
+            case 50: //addi
                 addi();
                 break;
-            case 51:
+            case 51:   //subi
                 subi();
                 break;
-            case 52:
+            case 52:   //rsubi
                 rsubi();
                 break;
-            case 53: 
+            case 53: //muli
                 muli();
                 break;
-            case 54: 
+            case 54:  //divi
                 if(!divi()){
                     std::cout << "division by 0" << std::endl;
                     return A;
                 }
                 break;
-            case 60:
+            case 60:   //addf
                 addf();
                 break;
-            case 61:
+            case 61:   //subf
                 subf();
                 break;
-            case 62:
+            case 62:  //mulf
                 mulf();
                 break;
-            case 63: {
+            case 63: {  //divf
                 if(!divf()){
                     std::cout << "division by 0" << std::endl;
                     return A;
