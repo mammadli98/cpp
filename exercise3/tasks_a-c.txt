@@ -2,18 +2,84 @@
 # Solution to task (a) #
 ########################
 
-Write down your solution to task (a) here. You can remove this line.
+
+Some compilers may provide default behaviors in presence of undefined behavior, 
+relying on this behavior is highly discouraged because it makes the code non-portable and unpredictable. 
+Undefined behavior can lead to unexpected program outcomes, security vulnerabilities. 
+Writing code with well-defined behavior ensures that the program behaves predictably across different compilers and platforms, 
+fostering reliability, maintainability, and a more secure software development process.
 
 
 ########################
 # Solution to task (b) #
 ########################
 
-Write down your solution to task (b) here. You can remove this line.
+#include <iostream>
 
+int main() {
+    int uninitializedVariable;
+    int result;
+
+    if (uninitializedVariable > 0) {
+        result = 100;
+    } else {
+        result = 0;
+    }
+
+    std::cout << "Result: " << result << std::endl;
+
+    return 0;
+}
+
+I think in this code uninitializedVariable is undefined behavior.
+but somehow in compiler with -O1 and -O0 I got same result. I do not know why
 
 ########################
 # Solution to task (c) #
 ########################
 
-Write down your solution to task (c) here. You can remove this line.
+with -O0:
+.LC0:
+        .string "Result: "
+main:
+        push    rbp
+        mov     rbp, rsp
+        sub     rsp, 16
+        cmp     DWORD PTR [rbp-8], 0
+        jle     .L2
+        mov     DWORD PTR [rbp-4], 100
+        jmp     .L3
+.L2:
+        mov     DWORD PTR [rbp-4], 0
+.L3:
+        mov     esi, OFFSET FLAT:.LC0
+        mov     edi, OFFSET FLAT:_ZSt4cout
+        call    std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*)
+        mov     rdx, rax
+        mov     eax, DWORD PTR [rbp-4]
+        mov     esi, eax
+        mov     rdi, rdx
+        call    std::basic_ostream<char, std::char_traits<char> >::operator<<(int)
+        mov     esi, OFFSET FLAT:_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
+        mov     rdi, rax
+        call    std::basic_ostream<char, std::char_traits<char> >::operator<<(std::basic_ostream<char, std::char_traits<char> >& (*)(std::basic_ostream<char, std::char_traits<char> >&))
+        mov     eax, 0
+        leave
+        ret
+
+with -O1:
+.LC0:
+        .string "Result: "
+main:
+        sub     rsp, 8
+        mov     esi, OFFSET FLAT:.LC0
+        mov     edi, OFFSET FLAT:_ZSt4cout
+        call    std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*)
+        mov     rdi, rax
+        mov     esi, 0
+        call    std::basic_ostream<char, std::char_traits<char> >::operator<<(int)
+        mov     rdi, rax
+        call    std::basic_ostream<char, std::char_traits<char> >& std::endl<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&)
+        mov     eax, 0
+        add     rsp, 8
+        ret
