@@ -2,25 +2,54 @@
 # Solution to task (a) #
 ########################
 
-Write down your solution to task (a) here. You can remove this line.
+a glvalue (“generalized” lvalue)
+a prvalue (“pure” rvalue) 
+an xvalue (an “eXpiring” value)
+an lvalue
+an rvalue
 
 
 ########################
 # Solution to task (b) #
 ########################
 
-Write down your solution to task (b) here. You can remove this line.
+init-statement: unsigned i = 0, j = 0;
+expression:  ++i, j *= 2
+
+
+in the fist component of the for loop is a comma operator:
+    ++i, j *= 2
+
+In a comma expression ++i, j *= 2, the expression ++i is evaluated, its result is discarded.
+its side effects are completed before evaluation of the expression j *= 2 begins
 
 
 ########################
 # Solution to task (c) #
 ########################
 
-Write down your solution to task (c) here. You can remove this line.
+Numeric promotion is a conversion of an operand to a common type.
+For example:
+
+int i = 10;
+double d1 = 2.5;
+double d2 = d1 * i;
+i is promoted to double so the calculation can be performed.
+
+Numeric conversionsis converting an integral type to any other integral type:
+For example:
+short s = 3; // convert int to short
+long l = 3; // convert int to long
+char ch = s; // convert short to char
+unsigned int u = 3; // convert int to unsigned int
 
 
 ########################
 # Solution to task (d) #
 ########################
 
-Write down your solution to task (d) here. You can remove this line.
+std::cout << std::dec -> print hexadecimal
+std::cout << std::setw -> print fixed width
+std::cout << std::setfill -> print leading zeros
+std::cout << std::right -> right align
+ 
