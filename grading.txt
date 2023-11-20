@@ -1,0 +1,19 @@
+Grading for sheet02:
+
+sum:  86 points
+2.1a:   2 points
+2.1b:   2 points
+2.1c:   2 points  -1 wrong 'numeric promotion' example (not all integers can be represented as doubles without loss of precision), -1 missing: in contrast to numeric promotion, in numeric conversion information may get lost
+2.1d:   1 points  -1 std::hex for hexadecimal
+2.2a:  29 points  Set all registers to 0 [3/3]; Read opcode, read arguments if necessary [6/6]; Switch statement over opcodes [5/5]; Opcodes with potential overflow implemented correctly (addi, (r)subi, muli) [2/7 undefined behavior due to signed integer overflow can be avoided for example by using numeric promotion and numeric conversion: 'int64_t result = A; result += B; A = result;']; Other opcodes implemented correctly [8/8]; C++ style [4/5 instead of converting the input stream to a std::string and converting it back to a stream, you could have just used 'std::cin >> opcode;' and in the cases where arguments are required, 'std::cin >> reg; std::cin >> value;'; comment out assignments of variables to themselves like 'A=A;'; in ftoi and itof you don't need to declare local variables, e.g. 'A = X;' is fine]
+2.2b:  12 points  Instructions to initialize f0 and f1 [2/4 you set f1 to 1, but expect f0 to be 0 (which is the case if the VM has just started, but this is not necessarily the case) -> print out "10 A 0\n" before "10 B 1\n", and "10 A 0" for n==0]; For loop that outputs instructions that calculate fn [8/9 you forgot to print "0" for n==1, otherwise nice solution]; C++ style [2/2]
+2.3a:   4 points
+2.3b:  10 points
+2.3c:   6 points
+2.4a:   2 points
+2.4b:   4 points
+2.4c:   4 points
+2.4d:   4 points
+2.4e:   4 points  how is missing, for example, bt
+
+Please note: We will not respond to emails regarding the grading. If you have any questions, you are welcome to contact us on site before/after the lecture.
